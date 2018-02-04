@@ -387,6 +387,7 @@ import UIKit
     // MARK: - private methods
 
     private func setup() {
+        leftHandle.backgroundColor = UIColor.black.cgColor
         isAccessibilityElement = false
         accessibleElements = [leftHandleAccessibilityElement, rightHandleAccessibilityElement]
 
@@ -436,10 +437,10 @@ import UIKit
         guard minValue < maxValue else { return 0.0 }
 
         // get the difference between the maximum and minimum values (e.g if max was 100, and min was 50, difference is 50)
-        let maxMinDif: CGFloat = maxValue - minValue
+        let maxMinDif = maxValue - minValue
 
         // now subtract value from the minValue (e.g if value is 75, then 75-50 = 25)
-        let valueSubtracted: CGFloat = value - minValue
+        let valueSubtracted = value - minValue
 
         // now divide valueSubtracted by maxMinDif to get the percentage (e.g 25/50 = 0.5)
         return valueSubtracted / maxMinDif
@@ -448,22 +449,32 @@ import UIKit
     private func xPositionAlongLine(for value: CGFloat) -> CGFloat {
         // first get the percentage along the line for the value
         let percentage: CGFloat = percentageAlongLine(for: value)
+        
+        debugPrint("percentage", percentage)
 
         // get the difference between the maximum and minimum coordinate position x values (e.g if max was x = 310, and min was x=10, difference is 300)
-        let maxMinDif: CGFloat = sliderLine.frame.maxX - sliderLine.frame.minX
+        let maxMinDif = sliderLine.frame.maxX - sliderLine.frame.minX
+        
+        debugPrint("maxMinDif", maxMinDif, "sliderLine.frame.maxX", sliderLine.frame.maxX, "sliderLine.frame.minX", sliderLine.frame.minX)
+
 
         // now multiply the percentage by the minMaxDif to see how far along the line the point should be, and add it onto the minimum x position.
-        let offset: CGFloat = percentage * maxMinDif
+        let offset = percentage * maxMinDif
+        
+        
+        debugPrint("offset", offset, "and result", sliderLine.frame.minX + offset)
 
         return sliderLine.frame.minX + offset
     }
 
     private func updateLineHeight() {
-        let barSidePadding: CGFloat = 16.0
+        let barSidePadding: CGFloat = 2
         let yMiddle: CGFloat = frame.height / 2.0
         let lineLeftSide: CGPoint = CGPoint(x: barSidePadding, y: yMiddle)
         let lineRightSide: CGPoint = CGPoint(x: frame.width - barSidePadding,
                                              y: yMiddle)
+        
+        debugPrint("lineLeftSide.x", lineLeftSide.x, "lineRightSide.x", lineRightSide.x)
         sliderLine.frame = CGRect(x: lineLeftSide.x,
                                   y: lineLeftSide.y,
                                   width: lineRightSide.x - lineLeftSide.x,
@@ -535,11 +546,13 @@ import UIKit
     }
 
     private func updateHandlePositions() {
-        leftHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMinValue),
-                                      y: sliderLine.frame.midY)
+        leftHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMinValue) + handleDiameter / 2, y: sliderLine.frame.midY)
+        debugPrint("leftHandle.position", leftHandle.position)
+        if leftHandle.position.x < 0 {
+            leftHandle.position.x = 0
+        }
 
-        rightHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMaxValue),
-                                       y: sliderLine.frame.midY)
+        rightHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMaxValue) - handleDiameter / 2, y: sliderLine.frame.midY)
 
         // positioning for the dist slider line
         sliderLineBetweenHandles.frame = CGRect(x: leftHandle.position.x,
