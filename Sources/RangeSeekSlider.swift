@@ -171,6 +171,7 @@ import UIKit
 
             rightHandle.frame = handleFrame
             rightHandle.contents = image.cgImage
+            
         }
     }
 
@@ -450,20 +451,14 @@ import UIKit
         // first get the percentage along the line for the value
         let percentage: CGFloat = percentageAlongLine(for: value)
         
-        debugPrint("percentage", percentage)
-
         // get the difference between the maximum and minimum coordinate position x values (e.g if max was x = 310, and min was x=10, difference is 300)
         let maxMinDif = sliderLine.frame.maxX - sliderLine.frame.minX
         
-        debugPrint("maxMinDif", maxMinDif, "sliderLine.frame.maxX", sliderLine.frame.maxX, "sliderLine.frame.minX", sliderLine.frame.minX)
-
 
         // now multiply the percentage by the minMaxDif to see how far along the line the point should be, and add it onto the minimum x position.
         let offset = percentage * maxMinDif
         
-        
-        debugPrint("offset", offset, "and result", sliderLine.frame.minX + offset)
-
+    
         return sliderLine.frame.minX + offset
     }
 
@@ -474,7 +469,6 @@ import UIKit
         let lineRightSide: CGPoint = CGPoint(x: frame.width - barSidePadding,
                                              y: yMiddle)
         
-        debugPrint("lineLeftSide.x", lineLeftSide.x, "lineRightSide.x", lineRightSide.x)
         sliderLine.frame = CGRect(x: lineLeftSide.x,
                                   y: lineLeftSide.y,
                                   width: lineRightSide.x - lineLeftSide.x,
@@ -546,12 +540,15 @@ import UIKit
     }
 
     private func updateHandlePositions() {
-        leftHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMinValue) + handleDiameter / 2, y: sliderLine.frame.midY)
-        debugPrint("leftHandle.position", leftHandle.position)
-        if leftHandle.position.x < 0 {
-            leftHandle.position.x = 0
-        }
-
+//        if let handleImage = handleImage {
+//            let imageWidth = handleImage.size.width / 2
+//            let x = imageWidth
+//            leftHandle.backgroundColor = UIColor.yellow.cgColor
+//            leftHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMinValue) + x, y: sliderLine.frame.midY)
+//        } else {
+            leftHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMinValue) + handleDiameter / 2, y: sliderLine.frame.midY)
+//        }
+        
         rightHandle.position = CGPoint(x: xPositionAlongLine(for: selectedMaxValue) - handleDiameter / 2, y: sliderLine.frame.midY)
 
         // positioning for the dist slider line
