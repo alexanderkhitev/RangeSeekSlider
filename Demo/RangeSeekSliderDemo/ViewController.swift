@@ -63,13 +63,13 @@ final class ViewController: UIViewController {
 extension ViewController: RangeSeekSliderDelegate {
 
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
-        if slider === rangeSlider {
-            print("Standard slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
-        } else if slider === rangeSliderCurrency {
-            print("Currency slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
-        } else if slider === rangeSliderCustom {
-            print("Custom slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
-        }
+//        if slider === rangeSlider {
+//            print("Standard slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
+//        } else if slider === rangeSliderCurrency {
+//            print("Currency slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
+//        } else if slider === rangeSliderCustom {
+//            print("Custom slider updated. Min Value: \(minValue) Max Value: \(maxValue)")
+//        }
     }
 
     func didStartTouches(in slider: RangeSeekSlider) {

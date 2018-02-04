@@ -227,7 +227,8 @@ import UIKit
     private enum HandleTracking { case none, left, right }
     private var handleTracking: HandleTracking = .none
 
-    private let sliderLine: CALayer = CALayer()
+    private let sliderLine = CALayer()
+    private let sliderBackgroundLine = CALayer()
     private let sliderLineBetweenHandles: CALayer = CALayer()
 
     private let leftHandle: CALayer = CALayer()
@@ -391,8 +392,10 @@ import UIKit
         accessibleElements = [leftHandleAccessibilityElement, rightHandleAccessibilityElement]
 
         // draw the slider line
+        layer.addSublayer(sliderBackgroundLine)
+        
         layer.addSublayer(sliderLine)
-
+    
         // draw the track distline
         layer.addSublayer(sliderLineBetweenHandles)
 
@@ -468,7 +471,9 @@ import UIKit
                                   y: lineLeftSide.y,
                                   width: lineRightSide.x - lineLeftSide.x,
                                   height: lineHeight)
-        sliderLine.cornerRadius = lineHeight / 2.0
+        
+        sliderBackgroundLine.frame = CGRect(x: handleDiameter / 2, y: lineLeftSide.y, width: frame.width - handleDiameter, height: lineHeight)
+        sliderBackgroundLine.cornerRadius = lineHeight / 2
         sliderLineBetweenHandles.cornerRadius = sliderLine.cornerRadius
     }
 
@@ -504,6 +509,7 @@ import UIKit
             maxLabel.foregroundColor = initialColor
             sliderLineBetweenHandles.backgroundColor = initialColor
             sliderLine.backgroundColor = initialColor
+            sliderBackgroundLine.backgroundColor = initialColor
 
             let color: CGColor = (handleImage == nil) ? initialColor : UIColor.clear.cgColor
             leftHandle.backgroundColor = color
@@ -515,6 +521,7 @@ import UIKit
             minLabel.foregroundColor = minLabelColor?.cgColor ?? tintCGColor
             maxLabel.foregroundColor = maxLabelColor?.cgColor ?? tintCGColor
             sliderLineBetweenHandles.backgroundColor = colorBetweenHandles?.cgColor ?? tintCGColor
+            sliderBackgroundLine.backgroundColor = tintCGColor
             sliderLine.backgroundColor = tintCGColor
 
             let color: CGColor
