@@ -111,16 +111,16 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="handleImage" value="custom-handle"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
-                                                <real key="value" value="10"/>
+                                                <real key="value" value="2.25"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="selectedMinValue">
-                                                <real key="value" value="0.0"/>
+                                                <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="colorBetweenHandles">
                                                 <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="selectedMaxValue">
-                                                <real key="value" value="100"/>
+                                                <real key="value" value="80"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                                 <real key="value" value="0.0"/>
@@ -129,7 +129,7 @@
                                                 <real key="value" value="100"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="handleDiameter">
-                                                <real key="value" value="34"/>
+                                                <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
