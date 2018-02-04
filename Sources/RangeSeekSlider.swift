@@ -467,13 +467,14 @@ import UIKit
         let lineLeftSide: CGPoint = CGPoint(x: barSidePadding, y: yMiddle)
         let lineRightSide: CGPoint = CGPoint(x: frame.width - barSidePadding,
                                              y: yMiddle)
-        sliderLine.frame = CGRect(x: lineLeftSide.x,
+        sliderLine.frame = CGRect(x: handleDiameter / 2,
                                   y: lineLeftSide.y,
-                                  width: lineRightSide.x - lineLeftSide.x,
+                                  width: frame.width - handleDiameter,
                                   height: lineHeight)
         
         
-        sliderBackgroundLine.frame = CGRect(x: 3.5, y: lineLeftSide.y, width: frame.width - 7, height: lineHeight)
+        
+        sliderBackgroundLine.frame = CGRect(x: 4.5, y: lineLeftSide.y, width: frame.width - 9, height: lineHeight)
         sliderBackgroundLine.cornerRadius = lineHeight / 2
         sliderLineBetweenHandles.cornerRadius = sliderLine.cornerRadius
     }

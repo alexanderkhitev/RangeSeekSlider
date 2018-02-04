@@ -31,11 +31,11 @@ final class ViewController: UIViewController {
         rangeSliderCurrency.maxValue = 150.0
         rangeSliderCurrency.selectedMinValue = 60.0
         rangeSliderCurrency.selectedMaxValue = 140.0
-        rangeSliderCurrency.minDistance = 20.0
-        rangeSliderCurrency.maxDistance = 80.0
+//        rangeSliderCurrency.minDistance = 20.0
+//        rangeSliderCurrency.maxDistance = 80.0
         rangeSliderCurrency.handleColor = .green
         rangeSliderCurrency.handleDiameter = 30.0
-        rangeSliderCurrency.selectedHandleDiameterMultiplier = 1.3
+//        rangeSliderCurrency.selectedHandleDiameterMultiplier = 1.3
         rangeSliderCurrency.numberFormatter.numberStyle = .currency
         rangeSliderCurrency.numberFormatter.locale = Locale(identifier: "en_US")
         rangeSliderCurrency.numberFormatter.maximumFractionDigits = 2
