@@ -462,7 +462,7 @@ import UIKit
     }
 
     private func updateLineHeight() {
-        let barSidePadding: CGFloat = 16.0
+        let barSidePadding: CGFloat = 16  //16
         let yMiddle: CGFloat = frame.height / 2.0
         let lineLeftSide: CGPoint = CGPoint(x: barSidePadding, y: yMiddle)
         let lineRightSide: CGPoint = CGPoint(x: frame.width - barSidePadding,
@@ -472,7 +472,8 @@ import UIKit
                                   width: lineRightSide.x - lineLeftSide.x,
                                   height: lineHeight)
         
-        sliderBackgroundLine.frame = CGRect(x: handleDiameter / 2, y: lineLeftSide.y, width: frame.width - handleDiameter, height: lineHeight)
+        
+        sliderBackgroundLine.frame = CGRect(x: 3.5, y: lineLeftSide.y, width: frame.width - 7, height: lineHeight)
         sliderBackgroundLine.cornerRadius = lineHeight / 2
         sliderLineBetweenHandles.cornerRadius = sliderLine.cornerRadius
     }
